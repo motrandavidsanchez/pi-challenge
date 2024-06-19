@@ -16,4 +16,4 @@ APP_VERSION: str = __config("APP_VERSION", cast=str, default="0.0.1")
 DOCS_URL: str = "/docs" if IS_DEBUG else None
 
 # Database
-DATABASE_URL: str = __config("DATABASE_URL", cast=str)
+DATABASE_URL: str = __config("DATABASE_URL", cast=str, default="sqlite+aiosqlite:///test.db")
