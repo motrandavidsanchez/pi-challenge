@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from starlette import status
 
 from src.settings.config import APP_DESCRIPTION, DOCS_URL, APP_NAME, APP_VERSION
+from src.character.router import router as router_character
 
 app = FastAPI(
     description=APP_DESCRIPTION,
@@ -15,8 +16,10 @@ app = FastAPI(
     root_path="/api/v1"
 )
 
+app.include_router(router_character, prefix="/character", tags=["Character"])
+
 
 @app.get(path="/root", status_code=status.HTTP_200_OK)
 def root():
-    return {"Connected to PI application"}
+    return {"msg": "Connected to PI application"}
 
